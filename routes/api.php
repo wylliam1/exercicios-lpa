@@ -102,7 +102,7 @@ Route::get('questao14', function (Request $request) {
     return $resultado;
 });
 
-Route::get('questao15',function(Request $request){
+Route::get('questao15', function (Request $request) {
     $preçoproduto = $request->input('preçoproduto');
     $comissão = $request->input('comissão');
     $porcentagem = $preçoproduto / 100;
@@ -111,7 +111,7 @@ Route::get('questao15',function(Request $request){
 });
 
 Route::get('questao16', function (request $request) {
-    
+
     $dias = $request->input('dias');
 
     $horas = $dias * 54;
@@ -126,8 +126,72 @@ Route::get('questao16', function (request $request) {
 });
 
 Route::get('questao17', function (request $request) {
-$precoProduto = $request->input('Produto');
-$quantidade = $request->input('quantidade');
-$resultado = "valor total: " . $precoProduto * $quantidade;
-return $resultado;
+    $precoProduto = $request->input('Produto');
+    $quantidade = $request->input('quantidade');
+    $resultado = "valor total: " . $precoProduto * $quantidade;
+    return $resultado;
+});
+
+Route::get('verifica/idade', function (Request $request) {
+    $idade = $request->input('idade');
+    if ($idade >= 18) {
+        return "maior de idade";
+    } else {
+        return "menor de idade";
+    }
+});
+
+// tarefas da aula do dia 20/03/2024.
+
+Route::get('impar/par', function (Request $request) {
+    $numeros = $request->input('numero');
+    if ($numeros % 2 == 0) {
+        return 'par';
+    } else {
+        return 'impar';
+    }
+});
+
+// exercicios 
+
+Route::get('maior10/1', function (Request $request) {
+    $numero = $request->input('numero');
+    if ($numero > 10) {
+        return "numero maior que 10";
+    } else {
+        return "numero menor que 10";
+    }
+});
+
+Route::get('clima/2', function (Request $request) {
+    $numero = $request->input('numero');
+    if ($numero > 30) {
+        return "está quente";
+    } else {
+        return "está frio";
+    }
+});
+
+Route::get('positivo/negativo/3', function (Request $request) {
+    $numero = $request->input('numero');
+    if ($numero > 0) {
+        return 'esse numero é positivo';
+    } else if ($numero < 0) {
+        return 'esse numero é negativo';
+    } else {
+        return 'esse numero é igual a 0';
+    }
+});
+
+Route::get('dois-numeros/4', function (Request $request) {
+    $numero1 = $request->input('valor');
+    $numero2 = $request->input('numero');
+    if ($numero1 > $numero2) {
+    } else {
+        return $numero2;
+    }
+});
+
+Route::get('', function (Request $request){
+
 });
