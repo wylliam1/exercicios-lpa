@@ -191,7 +191,3 @@ Route::get('dois-numeros/4', function (Request $request) {
         return $numero2;
     }
 });
-
-Route::get('', function (Request $request){
-
-});
