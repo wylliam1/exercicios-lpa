@@ -162,7 +162,7 @@ Route::get('maior10/1', function (Request $request) {
 
 Route::get('clima/2', function (Request $request) {
     $numero = $request->input('numero');
-    if ($numero > 30) {
+    if ($numero >= 30) {
         return "está quente";
     } else {
         return "está frio";
@@ -182,10 +182,10 @@ Route::get('positivo/negativo/3', function (Request $request) {
 
 Route::get('dois-numeros/4', function (Request $request) {
     $numero1 = $request->input('valor');
-    $numero2 = $request->input('numero');
-    if ($numero1 > $numero2) {
+    $Numero2 = $request->input('numero');
+    if ($numero1 > $Numero2) {
     } else {
-        return $numero2;
+        return $Numero2;
     }
 });
 
@@ -259,7 +259,7 @@ Route::get('exercicio/6', function (Request $request) {
 
 Route::get('exercicio/7', function (Request $request) {
     $numero = $request->input('numero');
-    if ($numero > 30) {
+    if ($numero >= 30) {
         return "está quente";
     } else {
         return "está frio";
@@ -285,7 +285,7 @@ Route::get('exercicio/9', function (Request $request) {
 
 Route::get('exercicio/10', function (Request $request) {
     $numero = $request->input('numero');
-    if ($numero %  3 ==0) {
+    if ($numero %  3 == 0) {
         return 'possitívo e ímpar';
     }
 });
@@ -306,7 +306,7 @@ Route::get('exercicio/12', function (Request $request) {
     if ($numero % 6 == 0) {
         return 'é divisivel por 6';;
     } else {
-        return 'Não é divisivel pr 6';
+        return 'Não é divisivel por 6';
     }
 });
 
@@ -342,46 +342,157 @@ Route::get('exercicio/17', function (Request $request) {
     $idade = $request->input('idade');
     if ($idade >= 18) {
         return ' Você é maior de idade ' . $nome;
-    }else{
-        return' Você é menor de idade ' . $nome;
+    } else {
+        return ' Você é menor de idade ' . $nome;
     }
-
 });
 
-Route::get('exercicio/18', function (Request $request){
+Route::get('exercicio/18', function (Request $request) {
     $numero1 = $request->input('numero1');
     $numero2 = $request->input('numero2');
-    if($numero1 ==0) {
+    if ($numero1 == 0) {
         return "não é possivel efetuar a divisão pois o primeiro número é zero";
-    }
-    else if ($numero2 == 0) {
-        return'não é possivel efetuar a divisão pois o segundo número é zero';
+    } else if ($numero2 == 0) {
+        return 'não é possivel efetuar a divisão pois o segundo número é zero';
     } else {
         $resulatdo = $numero1 / $numero2;
         return $numero1 . "/" . $numero2 . "=" . $resulatdo;
     }
 });
 
-Route::get('exercicio/19', function (Request $request){
-$numero1 = $request->input('numero1');
-$numero2 = $request->input('numero2');
-$resulatdo = $numero1 * $numero2;
-if($resulatdo > 100){
-return 'resultado maior que 100';
-}else if($resulatdo < 100){
-    return 'resultado menor que 100';
-}
+Route::get('exercicio/19', function (Request $request) {
+    $numero1 = $request->input('numero1');
+    $numero2 = $request->input('numero2');
+    $resulatdo = $numero1 * $numero2;
+    if ($resulatdo > 100) {
+        return 'resultado maior que 100';
+    } else if ($resulatdo < 100) {
+        return 'resultado menor que 100';
+    }
 });
 
-Route::get('exercicio/20', function (Request $request){
-$primeiroNumero = $request->input('numero1');
-$segundoNumero = $request->input('numero2');
-$resultado = $primeiroNumero + $segundoNumero;
-if ($resultado % 2 ==0){
-    $multiplica = $primeiroNumero * $segundoNumero;
-    return $primeiroNumero . 'x' . $segundoNumero . '=' . $multiplica;
-}else{
-    $dividir = $primeiroNumero % $segundoNumero;
-    return $primeiroNumero . '/' . $segundoNumero . '=' . $dividir;
+Route::get('exercicio/20', function (Request $request) {
+    $primeiroNumero = $request->input('numero1');
+    $segundoNumero = $request->input('numero2');
+    $resultado = $primeiroNumero + $segundoNumero;
+    if ($resultado % 2 == 0) {
+        $multiplica = $primeiroNumero * $segundoNumero;
+        return $primeiroNumero . 'x' . $segundoNumero . '=' . $multiplica;
+    } else {
+        $dividir = $primeiroNumero % $segundoNumero;
+        return $primeiroNumero . '/' . $segundoNumero . '=' . $dividir;
+    }
+});
+
+// 6 exercicios do dia 03/04/2024
+
+Route::get('exercicio/1', function (request $request) {
+    $nota1 = $request->input('nota1');
+    $nota2 = $request->input('nota2');
+    $nota3 = $request->input('nota3');
+    $resultado = ($nota1 + $nota2 + $nota3) / 3;
+    if ($resultado >= 7) {
+        return "aluno aprovado";
+    } else if ($resultado < 7) {
+        return "aluno reprovado";
+    }
+});
+
+Route::get('exercicio->3', function (Request $request) {
+    $ano = $request->input('ano');
+    if ($ano % 4 == 0) {
+        return 'É ano bissexto';
+    } else {
+        return 'Não é ano bissexto';
+    }
+});
+
+Route::get('exercicio->5', function (Request $request) {
+    $peso = $request->input('peso');
+    $altura = $request->input('altura');
+    $resultado = $peso / ($altura * $altura);
+
+    if ($resultado < 18.5) {
+        return 'Abaixo do peso';
+    }
+
+    if ($resultado >= 18.5) {
+        if ($resultado < 25) {
+            return 'peso adequado';
+        }
+    }
+
+    if ($resultado >= 25) {
+        if ($resultado < 30) {
+            return 'sobrepeso!';
+        }
+    }
+
+    if ($resultado >= 30) {
+        return 'obesidade';
+    }
+});
+
+Route::get('exercicio->2', function (Request $request) {
+    $renda = $request->input('renda');
+    if ($renda < 1900) {
+    }
+    return 'isento de imposto';
+    if ($renda >= 1901) {
+        if ($renda <= 2800) {
+            $calculo1 = $renda * 7;
+            $calculo2 = $calculo1 / 100;
+            return $calculo2;
+        }
+    }
+
+    if ($renda >= 2801) {
+        if ($renda <= 3700) {
+            $calculo3 = $renda * 15;
+            $calculo4 = $calculo3 / 100;
+            return $calculo4;
+        }
+    }
+
+    if ($renda >= 3701) { {
+            $calculo5 = $renda * 22;
+            $calculo6 = $calculo5 / 100;
+            return $calculo6;
+        }
+    }
+});
+
+Route::get('exercicio->4', function (Request $request) {
+    $produto = $request->input('produto');
+
+        if ($produto > 1000) {
+            $calculo1 = $produto * 15;
+            $calculo2 = $calculo1 / 100;
+            return $calculo2;
+        }
+    
+});
+
+Route::get('exercicio->6', function (Request $request){
+$valor = $request->input('valor');
+$codigo = $request->input('codigo');
+if ($codigo == 1){
+    $aumento = ($valor * 5) / 100;
+    return 'o aumento salarial para o operário é de' . $aumento . 'reais';
+}
+
+if ($codigo == 2){
+    $aumento2 = ($valor * 10) / 100;
+    return 'o aumento salarial para o tecnico é de' . $aumento2 . 'reais';
+}
+
+if ($codigo == 3) {
+    $aumento3 = ($valor * 15) / 100;
+    return 'o aumento salarial para o tecnico é de' . $aumento3 . 'reais';
+}
+
+if ($codigo == 4) {
+    $aumento4 = ($valor * 20) / 100;
+    return 'o aumento salarial para o tecnico é de' . $aumento4 . 'reais';
 }
 });
